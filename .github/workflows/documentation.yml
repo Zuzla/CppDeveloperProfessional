@@ -20,7 +20,7 @@ jobs:
       uses: mattnotmitt/doxygen-action@v1.1.0
       with:
           doxyfile-path: ./IPAddressPrint/Doxyfile
-          working-directory: .
+          working-directory: ./IPAddressPrint
     
     # Deploy the HTML documentation to GitHub Pages
     - name: GH Pages Deployment
