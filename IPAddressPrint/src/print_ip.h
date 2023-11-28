@@ -7,7 +7,7 @@
 #include <string>
 #include <type_traits>
   
-/*! \addtogroup Print Ip
+/*! \addtogroup <main_group> Print Ip
  *
  *  @{
  */
@@ -17,7 +17,7 @@ namespace print_ip
 #pragma region containers
 
     /*!
-     *  \addtogroup Is STL Container
+     *  \addtogroup <Container_group> Is STL Container
      *  @{
      */
 
@@ -96,7 +96,7 @@ namespace print_ip
 #pragma region string
 
     /*!
-     *  \addtogroup Is String
+     *  \addtogroup <String_group> Is String
      *  @{
      */
 
@@ -140,7 +140,7 @@ namespace print_ip
 #pragma region tuple
 
     /*!
-     *  \addtogroup Is Tuple
+     *  \addtogroup <Tuple_group> Is Tuple
      *  @{
      */
 
