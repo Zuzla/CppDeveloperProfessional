@@ -6,7 +6,7 @@ set (CMAKE_CXX_STANDARD 17)
 add_executable(print_ip 
     src/main.cpp
     src/print_ip.h
-) 
+)  
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
