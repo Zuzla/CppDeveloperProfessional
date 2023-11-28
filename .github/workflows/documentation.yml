@@ -9,24 +9,12 @@ on:
         - printip
  
 jobs:
-  build-documentation:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set root
-      run: sudo node-gyp rebuild -g --unsafe-perm
-    
-    # Build the HTML documentation
-    - name: Doxygen Action
-      uses: mattnotmitt/doxygen-action@v1.1.0
-      with:
-          doxyfile-path: ./Doxyfile
-          working-directory: ./IPAddressPrint
-    
-    # Deploy the HTML documentation to GitHub Pages
-    - name: GH Pages Deployment
-      uses: DenverCoder1/doxygen-github-pages-action@v1.2.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        config_file: Doxyfile
-        branch: gh-pages
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: DenverCoder1/doxygen-github-pages-action@v1.2.0
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: gh-pages
+            folder: docs/html
+            config_file: Doxyfile
