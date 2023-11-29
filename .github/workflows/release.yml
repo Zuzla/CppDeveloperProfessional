@@ -3,6 +3,8 @@ name: 'C++ CI'
 on:
   pull_request:
   push:
+    branches: 
+        - main
   workflow_dispatch:
 
 jobs:
@@ -60,3 +62,4 @@ jobs:
           asset_path: .//BuildTestDeploy/build/packages/helloworld-0.0.${{ github.run_number }}-Linux.deb
           asset_name: helloworld-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
+        
