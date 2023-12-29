@@ -6,8 +6,8 @@
 void Files::find_files(const fs::path &cur_path, const int &level)
 {
     if (fs::is_directory(cur_path) && level != 0)
-    {
-        if (!contains(_exclude_directories, cur_path))
+    {        
+        if (auto it = std::find(_exclude_directories.begin(), _exclude_directories.end(), cur_path); it == _exclude_directories.end())
         {
             for (const fs::directory_entry &item : fs::directory_iterator(cur_path))
             {

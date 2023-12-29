@@ -13,20 +13,6 @@ using namespace std::literals;
 
 namespace fs = boost::filesystem;
 
-template <typename T, typename A>
-bool contains(const T &container, const A &find_item)
-{
-    for (const auto &item : container)
-    {
-        if (item == find_item)
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 class Files
 {
 public:
