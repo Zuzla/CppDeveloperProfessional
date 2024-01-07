@@ -23,23 +23,23 @@ jobs:
           pip install -U conan==1.62.0
       - name: Install conan
         run: |
-          conan profile new clang
-          conan profile update settings.os=Linux clang
-          conan profile update settings.os_build=Linux clang
-          conan profile update settings.arch=x86_64 clang
-          conan profile update settings.arch_build=x86_64 clang
-          conan profile update settings.compiler =clang clang
-          conan profile update settings.compiler.version=14 clang
-          conan profile update settings.compiler.libcxx=libstdc++ clang
-          conan profile update settings.build_type=Release clang
+          conan profile new pclang
+          conan profile update settings.os=Linux pclang
+          conan profile update settings.os_build=Linux pclang
+          conan profile update settings.arch=x86_64 pclang
+          conan profile update settings.arch_build=x86_64 pclang
+          conan profile update settings.compiler=clang pclang
+          conan profile update settings.compiler.version=14 pclang
+          conan profile update settings.compiler.libcxx=libstdc++ pclang
+          conan profile update settings.build_type=Release pclang
       - name: Show conan
         run: |    
-          conan profile show clang
+          conan profile show pclang
       - name: Update conan
         run: |
           cd ./bayan
           mkdir build && cd build
-          conan install --build missing -s build_type=Release --profile:build=clang ..
+          conan install --build missing -s build_type=Release --profile:build=pclang ..
       - name: Cmake
         run: |
           cd ./bayan/build 
