@@ -24,7 +24,7 @@ jobs:
       - name: Install conan
         run: |
           conan profile new clang
-          conan profile update settings.compiler.libcxx=libstdc++11 clang
+          conan profile update settings.compiler.libcxx=libstdc++ clang
           conan profile update settings.compiler.compiler=clang clang
           conan profile update settings.compiler.version=14 clang
       - name: Update conan
