@@ -16,6 +16,8 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
+          sudo apt install clang
+          sudo apt-get install libc++-dev
           sudo apt-get install cmake libgtest-dev -y 
           pip uninstall conan -y
           pip install -U conan==1.62.0
@@ -23,7 +25,7 @@ jobs:
         run: |
           cd ./bayan
           mkdir build && cd build
-          conan install .. --build=missing -s build_type=Release -s compiler=clang -s compiler.version=11 -s compiler.libcxx=libstdc++11
+          conan install .. --build missing -s compiler=clang -s compiler.version=14 -s compiler.libcxx=libstdc++11 -s build_type=Release
       - name: Cmake
         run: |
           cd ./bayan/build 
