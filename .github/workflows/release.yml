@@ -28,9 +28,9 @@ jobs:
           conan profile update settings.os_build=Linux clang
           conan profile update settings.arch=x86_64 clang
           conan profile update settings.arch_build=x86_64 clang
-          conan profile update settings.compiler.libcxx=libstdc++ clang
           conan profile update settings.compiler.compiler=clang clang
           conan profile update settings.compiler.version=14 clang
+          conan profile update settings.compiler.libcxx=libstdc++ clang
           conan profile update settings.build_type=Release clang
       - name: Show conan
         run: |    
