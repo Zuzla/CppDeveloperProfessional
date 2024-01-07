@@ -23,12 +23,14 @@ jobs:
           pip install -U conan==1.62.0
       - name: Install conan
         run: |
-          cd ./bayan
-          mkdir build && cd build
-          conan create .
+          conan profile detect --force
           conan profile update settings.compiler.libcxx=libstdc++11 default
           conan profile update settings.compiler.compiler=clang default
           conan profile update settings.compiler.version=14 default
+      - name: Update conan
+        run: |
+          cd ./bayan
+          mkdir build && cd build
           conan install .. --build missing -s compiler=clang -s compiler.version=14 -s compiler.libcxx=libstdc++11 -s build_type=Release
       - name: Cmake
         run: |
