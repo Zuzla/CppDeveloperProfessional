@@ -27,7 +27,7 @@ jobs:
         run: |
           cd ./bayan
           mkdir build && cd build
-          conan install .. --build=missing -s build_type=Release -s compiler=clang
+          conan install .. --build=missing -s build_type=Release -s compiler=clang -s compiler.version=14.0.0
       - name: Cmake
         run: |
           cd ./bayan/build 
