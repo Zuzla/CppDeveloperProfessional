@@ -1,11 +1,19 @@
 #include "bulk.h"
 
-void Bulk::RunCmd()
-{
-    std::string str{};
+#include <sstream>
+ 
 
-    while (getline(std::cin, str))
+void Bulk::AddCommand(const std::string &input)
+{
+    std::stringstream ss(input);
+	std::string str;
+
+
+    while (getline(ss, str, '\n'))
     {
+        if (str.empty())
+            continue;
+
         if (str == "{")
         {
             if (_open_brakets == 0)
@@ -34,6 +42,7 @@ void Bulk::RunCmd()
         {
             _time = std::chrono::system_clock::now().time_since_epoch().count();
         }
+
         commands.push(str);
 
         if ((commands.size() == _size_block) && (_open_brakets == _close_brakets))
@@ -41,8 +50,6 @@ void Bulk::RunCmd()
             Log();
         }
     }
-
-    Log();
 }
 
 void Bulk::Log()
@@ -62,19 +69,11 @@ void Bulk::Log()
     res_str.pop_back();
     res_str.pop_back();
 
-    LogToCmd("bulk: " + res_str);
-    LogToFile("bulk" + std::to_string(_time), res_str);
-}
+    for (const auto &item : loggers)
+    {
+        item->Log(DataBclock{std::to_string(_time + post++), res_str});
+    }
 
-void Bulk::LogToCmd(const std::string &res_str)
-{
-    std::cout << res_str << std::endl;
-}
-
-void Bulk::LogToFile(const std::string &name_file, const std::string &data)
-{
-    std::fstream f;
-    f.open(name_file, std::ios::out);
-    f << data << std::endl;
-    f.close();
+    // LogToCmd("bulk: " + res_str);
+    // LogToFile("bulk" + std::to_string(_time), res_str);
 }

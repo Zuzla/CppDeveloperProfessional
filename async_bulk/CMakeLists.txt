@@ -8,11 +8,22 @@ if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
-add_executable(bulk 
-  src/main.cpp
+add_library(async SHARED
+  src/async.cpp 
+  src/async.h
   src/bulk.cpp  
   src/bulk.h  
+  src/log.h
+  src/log_console.h  
+  src/logger_async.h  
+  src/log_file.h
 )
+
+add_executable(bulk 
+  src/main.cpp
+)
+
+target_link_libraries(bulk PRIVATE boost::boost async)
 
 add_executable(utest
     tests/utest.cpp
