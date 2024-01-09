@@ -8,7 +8,7 @@ if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
-add_library(async SHARED
+add_executable(bulk_server
   src/async.cpp 
   src/async.h
   src/bulk.cpp  
@@ -16,14 +16,15 @@ add_library(async SHARED
   src/log.h
   src/log_console.h  
   src/logger_async.h  
+  src/connection.cpp  
+  src/connection.h
   src/log_file.h
-)
-
-add_executable(bulk 
+  src/server.h
+  src/server.cpp
   src/main.cpp
 )
 
-target_link_libraries(bulk PRIVATE boost::boost async)
+target_link_libraries(bulk_server PRIVATE boost::boost)
 
 add_executable(utest
     tests/utest.cpp

@@ -71,7 +71,7 @@ void Bulk::Log()
 
     for (const auto &item : loggers)
     {
-        item->Log(DataBclock{std::to_string(_time + post++), res_str});
+        item->Log(DataBclock{"bulk_" + std::to_string(_time + post++), res_str});
     }
 
     // LogToCmd("bulk: " + res_str);
