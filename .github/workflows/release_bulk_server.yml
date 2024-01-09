@@ -30,7 +30,7 @@ jobs:
           cmake .. -DPATCH_VERSION=${{ github.run_number }} -DCMAKE_TOOLCHAIN_FILE="./conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=Release
       - name: Build
         run: |
-          cd ./bulk_server/build/bulk_server 
+          cd ./bulk_server/build 
           cmake --build .
       - name: Create Release
         id: create_release
