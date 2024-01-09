@@ -27,7 +27,7 @@ jobs:
       - name: Cmake
         run: |
           cd ./bulk_server/build 
-          cmake ..-DCMAKE_TOOLCHAIN_FILE="./conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=Release
+          cmake ..-DCMAKE_TOOLCHAIN_FILE=./conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
       - name: Build
         run: |
           cd ./bulk_server/build 
