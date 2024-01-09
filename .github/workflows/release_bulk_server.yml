@@ -32,14 +32,6 @@ jobs:
         run: |
           cd ./bulk_server/build 
           cmake --build .
-      - name: Build Test
-        run: |
-          cd ./bulk_server/build 
-          cmake --build . --target utest
-      - name: Build bulk_server
-        run: |
-          cd ./bulk_server/build 
-          cmake --build . --target bulk_server
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

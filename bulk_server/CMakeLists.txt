@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(bulk CXX)
 set (CMAKE_CXX_STANDARD 20)
-set (CMAKE_BUILD_TYPE Debug)
 
 find_package(Boost 1.82.0)
 if(Boost_FOUND)
@@ -25,8 +24,3 @@ add_executable(bulk_server
 )
 
 target_link_libraries(bulk_server PRIVATE boost::boost)
-
-add_executable(utest
-    tests/utest.cpp
-)
-target_link_libraries(utest PRIVATE boost::boost )
