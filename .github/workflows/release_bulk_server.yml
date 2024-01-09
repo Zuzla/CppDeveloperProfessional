@@ -27,7 +27,7 @@ jobs:
       - name: Cmake
         run: |
           cd ./bulk_server/build 
-          cmake .. -DCMAKE_TOOLCHAIN_FILE=./conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DCMAKE_TOOLCHAIN_FILE=./conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release -DPATCH_VERSION=${{ github.run_number }}
       - name: Build
         run: |
           cd ./bulk_server/build 
@@ -49,6 +49,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./bulk_server/build/packages/bulk_server-Linux.deb
-          asset_name: bulk_server-Linux.deb
+          asset_path: ./bulk_server/build/packages/bulk_server-0.0.${{ github.run_number }}-Linux.deb
+          asset_name: bulk_server-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
