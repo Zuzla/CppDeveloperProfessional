@@ -24,3 +24,8 @@ add_executable(bulk_server
 )
 
 target_link_libraries(bulk_server PRIVATE boost::boost)
+
+install(TARGETS bulk_server RUNTIME DESTINATION bin)
+
+set(CPACK_GENERATOR DEB)
+SET(CPACK_OUTPUT_FILE_PREFIX packages)
