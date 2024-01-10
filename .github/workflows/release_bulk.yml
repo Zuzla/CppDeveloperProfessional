@@ -21,7 +21,7 @@ jobs:
           pip install -U conan==1.62.0
       - name: Install conan
         run: |
-          cd ./BuildTestDeploy
+          cd ./bulk
           mkdir build && cd build
           conan install .. --build=missing -s build_type=Release
       - name: Cmake
