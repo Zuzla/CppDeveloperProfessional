@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(async CXX)
+
+set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
+set(PROJECT_VESRION 0.0.${PATCH_VERSION})
+
+project(async VERSION ${PROJECT_VESRION})
+
 set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_BUILD_TYPE Debug)
 
