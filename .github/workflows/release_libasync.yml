@@ -35,18 +35,14 @@ jobs:
       - name: Build libasync
         run: |
           cd ./async_bulk/build 
-          cmake --build . --target async
-      - name: Build main
-        run: |
-          cd ./async_bulk/build 
-          cmake --build . --target bulk
+          cmake --build . --target package
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: libasync ${{ github.run_number }}
+          tag_name: libasync-${{ github.run_number }}
           release_name: Release libasync ${{ github.run_number }}
           draft: false
           prerelease: false
