@@ -55,7 +55,7 @@ jobs:
       - name: Build bayan
         run: |
           cd ./bayan/build 
-          cmake --build . --target bayan
+          cmake --build . --target package
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
