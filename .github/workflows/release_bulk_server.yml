@@ -18,27 +18,23 @@ jobs:
           sudo apt-get update
           sudo apt-get install cmake libgtest-dev -y 
           pip uninstall conan -y
-          pip install -U conan==1.59.0
+          pip install -U conan==1.62.0
       - name: Install conan
         run: |
-          cd ./BuildTestDeploy
+          cd ./bulk_server
           mkdir build && cd build
           conan install .. --build=missing -s build_type=Release -s compiler.libcxx=libstdc++11
       - name: Cmake
         run: |
-          cd ./BuildTestDeploy/build 
-          cmake .. -DPATCH_VERSION=${{ github.run_number }}
+          cd ./bulk_server/build 
+          cmake .. -DCMAKE_TOOLCHAIN_FILE=./conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release -DPATCH_VERSION=${{ github.run_number }}
       - name: Build
         run: |
-          cd ./BuildTestDeploy/build 
+          cd ./bulk_server/build 
           cmake --build .
-      - name: Build Test
+      - name: Build Target
         run: |
-          cd ./BuildTestDeploy/build 
-          cmake --build . --target test
-      - name: Build package
-        run: |
-          cd ./BuildTestDeploy/build 
+          cd ./bulk_server/build 
           cmake --build . --target package
       - name: Create Release
         id: create_release
@@ -47,7 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
+          release_name: Release bulk_server ${{ github.run_number }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
@@ -57,6 +53,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: .//BuildTestDeploy/build/packages/helloworld-0.0.${{ github.run_number }}-Linux.deb
-          asset_name: helloworld-0.0.${{ github.run_number }}-Linux.deb
+          asset_path: ./bulk_server/build/packages/bulk_server-0.0.${{ github.run_number }}-Linux.deb
+          asset_name: bulk_server-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
