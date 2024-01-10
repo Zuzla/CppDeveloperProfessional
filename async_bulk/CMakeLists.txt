@@ -3,10 +3,12 @@ cmake_minimum_required(VERSION 3.0.0)
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.0.${PATCH_VERSION})
 
-project(async VERSION ${PROJECT_VESRION})
+project(libasync VERSION ${PROJECT_VESRION})
 
 set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_BUILD_TYPE Debug)
+
+configure_file(version.h.in version.h)
 
 find_package(Boost 1.82.0)
 if(Boost_FOUND)
