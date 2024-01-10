@@ -19,6 +19,8 @@ jobs:
           sudo apt-get install cmake libgtest-dev -y
       - name: Cmake
         run: |
+          cd ./matrix
+          mkdir build && cd build
           cd ./matrix/build 
           cmake .. -DPATCH_VERSION=${{ github.run_number }}
       - name: Build
