@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "async.h"
+#include "../lib/async.h"
 
 int main(int, char *[]) {
     std::size_t bulk = 5;
