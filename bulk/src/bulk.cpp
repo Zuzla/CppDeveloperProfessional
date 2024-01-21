@@ -62,19 +62,8 @@ void Bulk::Log()
     res_str.pop_back();
     res_str.pop_back();
 
-    LogToCmd("bulk: " + res_str);
-    LogToFile("bulk" + std::to_string(_time), res_str);
-}
-
-void Bulk::LogToCmd(const std::string &res_str)
-{
-    std::cout << res_str << std::endl;
-}
-
-void Bulk::LogToFile(const std::string &name_file, const std::string &data)
-{
-    std::fstream f;
-    f.open(name_file, std::ios::out);
-    f << data << std::endl;
-    f.close();
+    for (auto& item : logs)
+    {
+        item->Log(DataBclock{"bulk_" + std::to_string(_time), res_str});
+    }
 }

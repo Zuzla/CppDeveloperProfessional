@@ -18,6 +18,10 @@ add_executable(bulk
   src/main.cpp
   src/bulk.cpp  
   src/bulk.h  
+  src/log.h  
+  src/log_file.h  
+  src/log_console.h  
+  src/block.h  
 )
 
 add_executable(utest
